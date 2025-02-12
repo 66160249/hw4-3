@@ -52,13 +52,17 @@ function renderAppointments() {
 
     upcomingAppointments.forEach(appt => {
         const li = document.createElement('li');
-        li.className = `appointment-item ${appt.status === "cancelled" ? "cancelled" : ""}`;
+        li.className = `appointment-item flex justify-between p-4 rounded-md shadow-md bg-white ${appt.status === "cancelled" ? "cancelled" : ""}`;
         li.innerHTML = `
-            <span>${appt.date} | ${appt.startTime} - ${appt.endTime} : ${appt.title}</span>
-            ${appt.status !== 'cancelled' ? `<button onclick="cancelAppointment(${appt.id})" class="btn bg-red-500 hover:bg-red-700">ยกเลิก</button>` : ''}
+            <div>
+                <p class="text-lg font-semibold">📅 ${appt.date} | ⏰ ${appt.startTime} - ${appt.endTime}</p>
+                <p class="text-gray-600">${appt.title}</p>
+            </div>
+            ${appt.status !== 'cancelled' ? `<button onclick="cancelAppointment(${appt.id})" class="btn bg-red-500 hover:bg-red-700 text-sm px-3 py-1">ยกเลิก</button>` : ''}
         `;
         list.appendChild(li);
     });
 }
+
 
 renderAppointments();
