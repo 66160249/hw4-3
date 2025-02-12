@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการตารางนัดหมาย</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h2>📅 เพิ่มนัดหมายใหม่</h2>
-        <input id="title" type="text" placeholder="ชื่อเรื่อง" class="input-field">
-        <input id="date" type="date" class="input-field">
-        <input id="startTime" type="time" class="input-field">
-        <input id="endTime" type="time" class="input-field">
-        <button onclick="addAppointment()" class="btn">เพิ่มนัดหมาย</button>
-        
-        <h2>📋 รายการนัดหมาย</h2>
-        <ul id="appointmentList"></ul>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-center text-blue-600">📅 เพิ่มนัดหมายใหม่</h2>
+
+        <div class="mt-4 space-y-3">
+            <input id="title" type="text" placeholder="ชื่อเรื่อง" class="input-field">
+            <input id="date" type="date" class="input-field">
+            <input id="startTime" type="time" class="input-field">
+            <input id="endTime" type="time" class="input-field">
+            <button onclick="addAppointment()" class="btn bg-blue-500 hover:bg-blue-700">เพิ่มนัดหมาย</button>
+        </div>
+
+        <h2 class="text-2xl font-bold text-center text-gray-700 mt-6">📋 รายการนัดหมาย</h2>
+        <ul id="appointmentList" class="mt-4 space-y-2"></ul>
     </div>
-    
+
     <script src="function.js"></script>
 </body>
 </html>
