@@ -7,7 +7,7 @@ function addAppointment() {
     const endTime = document.getElementById('endTime').value;
 
     if (!title || !date || !startTime || !endTime) {
-        alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+        alert("⚠️ กรุณากรอกข้อมูลให้ครบถ้วน");
         return;
     }
 
@@ -21,7 +21,7 @@ function addAppointment() {
     };
 
     if (checkTimeConflict(newAppointment)) {
-        alert("มีนัดหมายในช่วงเวลาดังกล่าวแล้ว!");
+        alert("⚠️ มีนัดหมายในช่วงเวลานี้แล้ว!");
         return;
     }
 
@@ -37,7 +37,8 @@ function checkTimeConflict(newAppt) {
 }
 
 function cancelAppointment(id) {
-    appointments = appointments.map(appt => appt.id === id ? { ...appt, status: "cancelled" } : appt);
+    appointments = appointments.map(appt => 
+        appt.id === id ? { ...appt, status: "cancelled" } : appt);
     localStorage.setItem('appointments', JSON.stringify(appointments));
     renderAppointments();
 }
@@ -51,10 +52,10 @@ function renderAppointments() {
 
     upcomingAppointments.forEach(appt => {
         const li = document.createElement('li');
-        li.className = appt.status === "cancelled" ? "cancelled" : "";
+        li.className = `appointment-item ${appt.status === "cancelled" ? "cancelled" : ""}`;
         li.innerHTML = `
             <span>${appt.date} | ${appt.startTime} - ${appt.endTime} : ${appt.title}</span>
-            ${appt.status !== 'cancelled' ? `<button onclick="cancelAppointment(${appt.id})" class="btn">ยกเลิก</button>` : ''}
+            ${appt.status !== 'cancelled' ? `<button onclick="cancelAppointment(${appt.id})" class="btn bg-red-500 hover:bg-red-700">ยกเลิก</button>` : ''}
         `;
         list.appendChild(li);
     });
