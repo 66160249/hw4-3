@@ -21,15 +21,6 @@ h2 {
     font-size: 20px;
     margin-bottom: 15px;
     color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-h2::before {
-    content: "📅 ";
-    font-size: 24px;
-    margin-right: 5px;
 }
 
 .input-field {
@@ -37,8 +28,15 @@ h2::before {
     padding: 12px;
     margin: 8px 0;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
+    transition: all 0.2s;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.input-field:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
 }
 
 .btn {
@@ -54,7 +52,7 @@ h2::before {
 }
 
 .btn:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .bg-blue-500 {
@@ -72,7 +70,7 @@ h2::before {
 .appointment-item {
     background: #fff;
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
